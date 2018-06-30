@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "KeychainAccess",
-        "repositoryURL": "git@github.com:kishikawakatsumi/KeychainAccess.git",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
         "state": {
           "branch": null,
           "revision": "b2233a86ef693f1d7da80e3ced8ad86aacf85068",

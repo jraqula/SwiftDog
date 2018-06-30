@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "SwiftDog",
     dependencies: [
-        .package(url: "git@github.com:kishikawakatsumi/KeychainAccess.git", "3.0.0" ..< "4.0.0"),
+        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", "3.0.0" ..< "4.0.0"),
     ],
     targets: [
         .target(
