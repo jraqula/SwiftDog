@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'SwiftDog/Classes/**/*'
+  s.source_files = 'Sources/SwiftDog/Classes/**/*'
   
   # s.resource_bundles = {
   #   'SwiftDog' => ['SwiftDog/Assets/*.png']

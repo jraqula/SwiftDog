@@ -21,6 +21,8 @@ internal struct DataUsageInfo {
     }
 }
 
+#if os(iOS)
+
 public struct IOSAgent {
     private static let count:natural_t = mach_msg_type_number_t(MemoryLayout<host_cpu_load_info>.size / MemoryLayout<integer_t>.size)
     private static let machHost:mach_port_t = mach_host_self()
@@ -154,3 +156,5 @@ public struct IOSAgent {
         
     }
 }
+
+#endif

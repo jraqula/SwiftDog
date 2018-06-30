@@ -1,4 +1,4 @@
-
+import Foundation
 
 public class Datadog: API {
     
@@ -7,15 +7,17 @@ public class Datadog: API {
     internal static var base_url: String = "api.datadoghq.com/api/v1/"
     internal static var timer: Timer = Timer()
     internal static var interval_seconds: TimeInterval = TimeInterval(10)
-    internal static let host = UIDevice.current.identifierForVendor!.uuidString
-    internal static let model = UIDevice.current.model
+    internal static let host = Host.current().localizedName
+    internal static let model = "macos"
     internal static var use_agent = false
     internal static var auth: DatadogAuthentication? = nil
     
     @objc private static func sendData() {
         print("Sending metrics to the Datadog API.")
         if use_agent {
+            #if os(iOS)
             IOSAgent.send_agent_metrics()
+            #endif
         }
         do {
             try self.metric._send_data(url: base_url) { (error: Error?) in
@@ -40,8 +42,13 @@ public class Datadog: API {
         self.auth = DatadogAuthentication()
         self.use_agent = agent
         if default_tags {
+            #if os(iOS)
             self.metric.addTags(tags: ["agent:ios", "model:\(IOSAgent.modelIdentifier())"])
             self.event.addTags(tags: ["agent:ios", "model:\(IOSAgent.modelIdentifier())"])
+            #else
+            self.metric.addTags(tags: ["agent:macOS"])
+            self.event.addTags(tags: ["agent:macOS"])
+            #endif
         }
         self.change_interval(new: self.interval_seconds)
     }

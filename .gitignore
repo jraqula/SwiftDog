@@ -5,6 +5,7 @@
 Example/datadog_config.plist
 # Xcode
 build/
+.build
 *.pbxuser
 !default.pbxuser
 *.mode1v3
